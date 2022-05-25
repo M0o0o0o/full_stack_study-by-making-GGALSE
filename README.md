@@ -88,24 +88,24 @@
     또한 사이트 내에서 회원가입을 할 때는 이메일 인증을 거치도록 구현하였습니다. 이메일 인증은 <b>nodemailer</b>를 이용해 구현하였습니다.
     자체 서비스 회원가입 중 유효성 검사를 초기 구현에서는 프론트 단에서 집중적으로 처리하던 것을 백단에서도 동일하게 처리하도록 구현했습니다.
 </p>
-<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/join.gif">
+<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/readme_images/join.gif">
 
 #### 🏁 로그인
 <p>
     로그인은 passport-local passport-naver, passport-kakao를 이용하여 구현했습니다.
 </p>
 
-<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/login.gif">
+<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/readme_images/login.gif">
 
 #### 🏁 게시판
 <p>
     게시판의 글쓰기 기능을 위한 text editor 중 CKEditor를 이용했습니다.
 </p>
-<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/post.gif">
+<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/readme_images/post.gif">
 
 #### 🏁 반응형 
 <p>
    프론트와 관련해서 부족함이 많지만, 반응형으로 동작하도록 제작하고 싶어서 시도해봤습니다.  
 </p>
 
-<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/responsive.gif">
+<img src="https://github.com/Lee-moo/full_stack_study-by-making-GGALSE/blob/main/readme_images/responsive.gif">
