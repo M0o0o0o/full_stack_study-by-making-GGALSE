@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=kr" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="ALL" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="desctiption" content="깔세일번지에서 깔세상품, 깔세매장, 단기매장 등 다양한 정보를 만나 보세요." />
+    <meta name="keywords" content="깔세, 깔세매장, 깔세상품, 단기매장, 점포임대, 깔세자리, 상가임대, 폐업정리, 짜투리, 푸드트럭, 깔세장비, 노점노방" />
+    <meta name="reply-to" content="ggalseon@naver.com" />
+    <meta name="content-language" content="kr" />
+
+    <link rel="stylesheet" href="/default.css" />
+    <link rel="stylesheet" href="/layout.css" />
+    <link rel="stylesheet" href="/user.css" />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="/main_m.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
+    {% block style %} {% endblock %}
+    <title>깔세일번지</title>
+  </head>
+  <body>
+    {% if _message %}
+    <input type="hidden" id="_message" value="{{ _message }}" />
+    {% endif %}
+    <header role="banner">
+      <div class="inner_header com_width">
+        <h1 class="main_logo">
+          <a href="/"></a>
+        </h1>
+        <div class="wrapper_search">
+          <input type="text" id="searchtext" onkeyup="enterkey('main_search');" />
+          <a href="/board?curpage=1&pagesize=15&searchtype=4" id="main_search">검색</a>
+        </div>
+      </div>
+    </header>
+    <div class="whole_wrapper">
+      <div class="leftad"></div>
+      <div class="ggalse_main_wrapper com_width">
+        <!-- 왼쪽 -->
+        <div class="info" id="slide">
+          <div id="slide_close" onclick="slide_disabled();"></div>
+          <span class="visit" style="color: #00c73c; font-size: 12px">오늘 방문 : {{ visit }}</span>
+          {% if not login %}
+          <div class="login_form">
+            <form action="/login/local" method="post">
+              <input id="login_id" name="user_id" class="login_input" type="text" placeholder="아이디" />
+              <input id="login_pwd" class="login_input" name="password" type="password" placeholder="비밀번호" />
+              <input type="submit" onclick="return chk_login()" id="login_btn" value="로그인" />
+            </form>
+
+            <div class="easy_login_wrapper">
+              <div class="easy_login"><p>간편 로그인</p></div>
+              <ul>
+                <li>
+                  <a href="/login/oauth/kakao"><img src="/kakao_login.png" alt="카카오 로그인" /></a>
+                </li>
+                <li>
+                  <a href="/login/oauth/naver"><img src="/naver_login.png" alt="네이버 로그인" /></a>
+                </li>
+                <!-- 구글 이미지로 변경 21-07-24  -->
+                <li>
+                  <a href="/login/oauth/google"><img src="/google_login.png" alt="구글 로그인" /></a>
+                </li>
+              </ul>
+            </div>
+
+            <ul>
+              <li><a href="/user/help" class="hover_line">ID/PW 찾기</a></li>
+              <li><a href="/sign/terms" class="hover_line">회원가입</a></li>
+            </ul>
+          </div>
+
+          {% else %}
+          <div class="user_wrapper">
+            <div class="user_box">
+              <div class="user_image"></div>
+              <div class="user_info">
+                <span class="username"><a href="/user/myinfo" class="hover_line">{{name}}</a></span>
+                <p style="padding-bottom: 6px"><a href="/board?searchtype=5&searchtext={{ id }}&curpage=1&pagesize=15" class="hover_line user_board">내가 쓴 글 보기</a></p>
+              </div>
+            </div>
+            <p><a href="/logout" class="hover_line logout">로그아웃</a></p>
+          </div>
+
+          {% endif %}
+
+          <p class="write"><a href="/write" class="hover_line">글쓰기</a></p>
+
+          <nav>
+            <ul>
+              <li><a href="/board?btype=8&curpage=1&pagesize=15" class="hover_line">공지사항</a></li>
+              <li><a href="/board?btype=7&curpage=1&pagesize=15" class="hover_line">문의게시판</a></li>
+              <li><a href="/board?btype=1&curpage=1&pagesize=15" class="hover_line">깔세자리제공</a></li>
+              <li><a href="/board?btype=2&curpage=1&pagesize=15" class="hover_line">깔세자리구함</a></li>
+              <li><a href="/board?btype=3&curpage=1&pagesize=15" class="hover_line">노점/푸드트럭</a></li>
+              <li><a href="/board?btype=4&curpage=1&pagesize=15" class="hover_line">임대및매매</a></li>
+              <li><a href="/board?btype=5&curpage=1&pagesize=15" class="hover_line">깔세상품제공</a></li>
+              <li><a href="/board?btype=6&curpage=1&pagesize=15" class="hover_line">깔세상품구매</a></li>
+              <li><a href="/board?btype=10&curpage=1&pagesize=15" class="hover_line">광고</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="main_content_wrapper">{% block content %}{% endblock %}</div>
+      </div>
+      <div class="rightad"></div>
+    </div>
+    <footer>
+      <ul>
+        <li><a href="/board/article?id=1">이용약관</a></li>
+        <li><a href="/board/article?id=2">개인정보취급방침</a></li>
+        <li><a href="/board/article?id=3">이메일주소무단수집거부</a></li>
+        <li><a href="/board/article?id=4">광고모집</a></li>
+      </ul>
+      <div class="ggalseon_info">
+        <p>깔세일번지</p>
+        <div>Email : ggalseon@naver.com</div>
+        <div>Copyright 2021. 깔세일번지 inc. all rights reserved.</div>
+        <div>TEL : 010-7752-3787</div>
+      </div>
+    </footer>
+    <div class="slide_bar"><button id="slide_btn"></button></div>
+    <div id="blind" onclick="slide_disabled();"></div>
+    <script defer src="/alert.js"></script>
+    <script defer src="/check_form.js"></script>
+    <script defer src="/common.js"></script>
+    <script src="/layout.js"></script>
+    {% block js %}{% endblock %}
+  </body>
+</html>

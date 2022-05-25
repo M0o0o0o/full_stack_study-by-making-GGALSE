@@ -1,0 +1,88 @@
+.user_wrapper {
+  border-radius: 1px;
+  margin-bottom: 20px;
+}
+
+/* .user_box {
+  display: flex;
+  padding: 15px 0;
+}
+
+.user_image {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: #cccccc;
+  border-radius: 100%;
+}
+
+.user_image:before {
+  content: '\e9f3';
+  font-family: 'xeicon';
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  color: #e3e3e3;
+} */
+
+.user_wrapper .user_board {
+  display: inline-block;
+  position: relative;
+  margin-top: 10px;
+  padding-left: 21px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.user_wrapper .user_board:after {
+  content: '\eb1f';
+  position: absolute;
+  color: #00c73c;
+  font-family: 'xeicon';
+  left: 0;
+  font-size: 18px;
+}
+
+.user_wrapper .logout {
+  position: relative;
+  display: inline-block;
+  padding-left: 21px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.user_wrapper .logout:after {
+  content: '\e972';
+  color: #ff263c;
+  position: absolute;
+  font-family: 'xeicon';
+  left: 0;
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+.user_info {
+  flex-direction: column;
+  justify-content: start;
+  color: #000;
+  font-size: 15px;
+}
+
+.user_info .username {
+  display: inline-block;
+  font-size: 15px;
+  position: relative;
+  padding-right: 25px;
+  margin-bottom: 10px;
+}
+
+.user_info .username a:after {
+  content: '\e986';
+  font-family: 'xeicon';
+  position: absolute;
+  right: 0;
+  vertical-align: middle;
+  font-size: 15px;
+}

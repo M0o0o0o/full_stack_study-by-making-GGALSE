@@ -1,0 +1,26 @@
+header a {
+  width: 100px;
+  height: 18px;
+  background-image: url('/main_logo_m.png');
+}
+
+header {
+  padding: 15px 0;
+}
+
+header,
+.wrapper_info {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.wrapper_info {
+  padding: 20px 8px 20px 8px;
+}
+
+.info_box > label {
+  width: auto;
+}
+.info_box > input {
+  float: right;
+}

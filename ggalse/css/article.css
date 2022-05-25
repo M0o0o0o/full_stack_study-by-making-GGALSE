@@ -1,0 +1,68 @@
+.article_wrapper {
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+}
+
+.article_wrapper * {
+  font-size: 15px;
+}
+
+.board_name > a {
+  display: inline-block;
+  color: #f75959;
+  font-size: 13px;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.board_name > .u_area {
+  float: right;
+}
+.board_name > .u_area > * {
+  display: inline-block;
+  line-height: 25px;
+  width: 40px;
+  font-size: 13px;
+  color: #fff;
+  text-align: center;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+#b_modify {
+  background: #00c73c;
+}
+
+#b_delete {
+  background: #6b6b6b;
+}
+
+.title {
+  font-size: 25px;
+  line-height: 50px;
+  color: #333;
+}
+
+.name {
+  line-height: 1;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.etc_info {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.etc_info > span {
+  font-size: 13px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.article_content {
+  padding-top: 15px;
+  line-height: 20px;
+}

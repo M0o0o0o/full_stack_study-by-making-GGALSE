@@ -1,0 +1,59 @@
+textarea:focus {
+  outline: none;
+}
+
+input::placeholder {
+  font-size: 15px;
+}
+
+.main_content_wrapper {
+  color: #000;
+  flex-basis: 70%;
+}
+.main_content_wrapper > h2 {
+  font-size: 20px;
+  line-height: 1;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #000;
+  font-weight: bold;
+}
+
+.main_content_wrapper select,
+.main_content_wrapper input {
+  display: block;
+}
+
+#board,
+#title {
+  display: block;
+  font-size: 15px;
+  color: #000;
+  border: 1px solid #e4e8eb;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+#board {
+  width: 40%;
+  margin-top: 30px;
+}
+
+#title {
+  width: 60%;
+  padding-left: 5px;
+}
+
+#b_submit {
+  background: #00c73c;
+  color: #fff;
+  width: 55px;
+  line-height: 40px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+#cke_p_content body {
+  background: green;
+}

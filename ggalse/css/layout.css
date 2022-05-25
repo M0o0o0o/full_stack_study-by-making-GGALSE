@@ -1,0 +1,322 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  position: relative;
+  width : 100%;
+}
+input:focus {
+  outline: none;
+}
+
+.com_width {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+/* header */
+
+header {
+  width: 1518px;
+  padding: 30px 30px 30px 0;
+  margin : 0 auto;
+  /* border-bottom: 1px solid #e4e8eb; */
+}
+header .main_logo a {
+  display: inline-block;
+  width: 242px;
+  height: 92px;
+  background-image: url('/main_logo.png');
+}
+.inner_header {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper_search {
+  margin-left: 30px;
+}
+
+.wrapper_search > input {
+  border: 2px solid #00c73c;
+  border-right: none;
+  height: 40px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  width: 400px;
+  padding: 5px 10px;
+}
+
+.wrapper_search #main_search,
+.wrapper_search #b_search_btn {
+  vertical-align: middle;
+  line-height: 40px;
+  margin-left: -10px;
+  display: inline-block;
+  width: 50px;
+  background: #00c73c;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.whole_wrapper {
+  display: flex;
+  width: 1518px;
+  margin: 0 auto;
+}
+.leftad,
+.rightad {
+  width: 209px;
+}
+.ggalse_main_wrapper {
+  width: 1100px;
+  display: flex;
+  margin-top: 20px;
+  min-height: 700px;
+}
+
+.ggalse_main_wrapper .info {
+  padding: 15px;
+  flex-basis: 20%;
+  background: #f5f6f7;
+}
+
+
+.main_content_wrapper {
+  flex-basis: 80%;
+}
+
+.login_form {
+  position: relative;
+  border-radius: 1px;
+}
+
+#login_btn {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  background: #00c73c;
+  margin: 7px 0;
+  border-radius: 4px;
+  font-size: 15px;
+  text-align: center;
+  color: #fff;
+  line-height: 30px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.login_input {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  padding: 5px 0 5px 8px;
+  font-size: 15px;
+  line-height: 30px;
+  border: 1px solid #e4e8eb;
+  border-radius: 4px;
+}
+
+.login_form .easy_login_wrapper {
+  margin-top: 14px;
+}
+
+.login_form .easy_login {
+  height: 15px;
+  position: relative;
+  text-align: center;
+  z-index: auto;
+}
+.easy_login > p {
+  font-size: 11px;
+  color: #697285;
+  padding: 0 7px;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+.easy_login > p:after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 32%;
+  height: 1px;
+  background-color: #697285;
+}
+
+.easy_login > p:before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 32%;
+  height: 1px;
+  background-color: #697285;
+}
+
+.easy_login_wrapper ul {
+  color: #000;
+  display: flex;
+  justify-content: center;
+  line-height: 50px;
+}
+
+.easy_login_wrapper ul li {
+  padding: 0 10px;
+}
+.easy_login_wrapper ul li img {
+  display: inline-block;
+  border-radius: 100%;
+}
+
+.login_form > ul {
+  display: flex;
+  font-size: 12px;
+  color: #697285;
+  justify-content: center;
+  padding: 5px 2px;
+  line-height: 1;
+}
+.login_form > ul li {
+  position: relative;
+  padding: 7px 9px;
+}
+
+.login_form > ul li:first-child:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0px;
+  background: #c7c7c7;
+}
+
+/* 글쓰기  */
+
+.info > .write {
+  margin-top: 10px;
+}
+.info .write a {
+  font-size: 15px;
+  display: inline-block;
+  width: 99%;
+  line-height: 28px;
+  font-weight: normal;
+  background: #6b6b6b;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  letter-spacing: 3px;
+}
+
+.info .write a:hover {
+  background: #00c73c;
+}
+
+/* navigation */
+
+nav {
+  margin-top: 7px;
+  font-size: 15px;
+}
+
+nav ul li {
+  padding: 7px 25px;
+  border-bottom: 1px solid #bdbdbd;
+}
+nav ul li a {
+  position: relative;
+  display: inline-block;
+  color: #000;
+  line-height: 40px;
+  width: 100%;
+}
+
+nav ul li a:after {
+  content: '\eb1f';
+  font-family: 'xeicon';
+  position: absolute;
+  left: -20px;
+  font-size: 17px;
+  /* color: #00c73c; */
+}
+
+/* main_content_wrapper */
+
+.main_content_wrapper {
+  margin-bottom: 30px;
+  margin-left: 25px;
+}
+
+footer {
+  width: 1518px;
+  margin : 0 auto;
+  /* width : 1518px; */
+  /* margin : 0 auto; */
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  background: #f5f6f7;
+  border-top: 1px solid #e4e8eb;
+  border-bottom: 1px solid #e4e8eb;
+}
+
+footer ul li a {
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 50px;
+  font-size: 12px;
+}
+
+footer .ggalseon_info {
+  width: 500px;
+  margin: 0 auto;
+  padding: 15px 0 30px 0;
+  font-size: 14px;
+}
+
+footer .ggalseon_info p {
+  color: #00c73c;
+}
+footer .ggalseon_info div {
+  line-height: 16px;
+}
+
+.slide_bar {
+  visibility: hidden;
+  position: absolute;
+  top: 17px;
+  right: 15px;
+}
+
+#slide_btn {
+  cursor: pointer;
+  background: #fff;
+}
+
+#slide_btn:before {
+  content: '\e91c';
+  font-family: 'xeicon';
+  color: #383838;
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+@media screen and (min-width : 1518px) {
+  footer {
+    width : 100%;
+  }
+} 

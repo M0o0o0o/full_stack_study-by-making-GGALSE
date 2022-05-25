@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+header a {
+  display: inline-block;
+  width: 183px;
+  height: 33px;
+  background-image: url('/main_logo_s.png');
+}
+
+input:focus {
+  border: 2px solid #00c73c;
+}
+input {
+  display: inline-block;
+  border: 1px solid #dedede;
+  padding-left: 5px;
+  font-size: 13px;
+  color: #000;
+  height: 25px;
+  width: 50%;
+}
+
+input:read-only {
+  background: #cfcfcf;
+}
+input:read-only:focus {
+  border: none;
+}
+
+label {
+  display: inline-block;
+  color: #000;
+  font-size: 14px;
+  width: 24%;
+}
+
+header {
+  line-height: 1;
+  padding: 30px 0 30px 0;
+}
+
+header,
+.wrapper_info {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.wrapper_info {
+  position: relative;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 50px;
+}
+.wrapper_info:before {
+  content: '내 정보';
+  color: #000;
+  position: absolute;
+  display: inline-block;
+  background: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  width: 90px;
+  line-height: 1;
+  top: -5px;
+  left: 15px;
+  text-align: center;
+}
+
+.info_box {
+  padding-bottom: 30px;
+}
+
+.submit_form {
+  width: 100%;
+  padding: 20px 0 0;
+}
+
+.btn {
+  display: inline-block;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 13px;
+  border-radius: 100%;
+}
+
+#submit_btn {
+  color: #fff;
+  background: #00c73c;
+}
+
+#cancle_btn {
+  margin-left: 15px;
+  background: #525252;
+  color: #fff;
+}
+
+.wrapper_withdraw {
+  float: right;
+}
+
+.wrapper_withdraw a {
+  display: inline-block;
+  line-height: 40px;
+  width: 50x;
+  height: 40px;
+}
+
+.p_wrong:after {
+  content: '8~16자의 영문, 숫자, 특수문자를 사용하세요.';
+  color: #ff341f;
+}
+
+.p_r_wrong:after {
+  content: '비밀번호가 일치하지 않습니다.';
+  color: #ff341f;
+}
+
+.e_empty:after {
+  content: '필수 정보입니다.';
+  color: #ff341f;
+}

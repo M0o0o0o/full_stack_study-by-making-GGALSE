@@ -1,0 +1,83 @@
+{% extends 'layout.html' %} {% block style %} <link rel="stylesheet" href="/board.css" /> {% endblock %} {% block js %}
+<script src="pagination.js"></script>
+<script src="board.js"></script>
+<link rel="stylesheet" media="screen and (max-width:768px)" href="/board_m.css" />
+
+{% endblock %}
+<!-- {% if boardList %}{% endif %} -->
+{% block content %}
+<!--제목 작성자 작성일 조회 -->
+<input type="hidden" id="curPage" value="{{ curPage }}" />
+<input type="hidden" id="totalCnt" value="{{ total }}" />
+<input type="hidden" id="boardType" value="{{ btype }}" />
+
+<div class="board_info">
+  <h2 class="btype">{{ boardName }}</h2>
+  <div class="total"><span>{{ total }}개의 글</span></div>
+</div>
+<table class="board">
+  <caption>
+    <span class="hide">{{ boardName }} 게시글 목록</span>
+  </caption>
+  <colgroup>
+    <col width="55px" />
+    <col width="489px" />
+    <col width="130px" />
+    <col width="130px" />
+    <col width="55px" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      <th>제목</th>
+      <th class="th_user">작성자</th>
+      <th>작성일</th>
+      <th>조회</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if boardList %} {% for board in boardList %}
+    <tr>
+      <td class="b_small">{{ board.num }}</td>
+      <td class="title">
+        <a href="/board/article?id={{ board.id }}" class="hover_line">
+          <p>{{ board.title }}</p>
+          <div class="table_m">
+            <span>{{ board.createdAt }}</span>
+            <span>조회수 : {{ board.view }}</span>
+          </div>
+        </a>
+      </td>
+      <td>{{ board.username }}</td>
+      <td class="date b_small">{{ board.createdAt }}</td>
+      <td class="view b_small">{{ board.view }}</td>
+    </tr>
+    {% endfor%} {% endif %}
+  </tbody>
+</table>
+<ul>
+  {% if boardList %} {% for board in boardList %}
+
+  <li class="table_m">
+    <strong><a href="/board/article?id={{ board.id }}" class="hover_line"> {{ board.title }} </a></strong>
+    <div>
+      <span>{{ board.createdAt }}</span>
+      <span>조회수 : {{ board.view }}</span>
+    </div>
+  </li>
+  {% endfor%} {% endif %}
+</ul>
+
+<ul id="paging"></ul>
+<div class="wrapper_search wrapper_b_s">
+  <select name="searchtype" id="searchtype">
+    <option value="4" selceted>제목 + 내용</option>
+    <option value="1">제목</option>
+    <option value="2">내용</option>
+    <option value="3">작성자</option>
+  </select>
+  <input type="text" id="search_board" onkeyup="enterkey('b_search_btn');" />
+  <a href="javascript:void(0)" id="b_search_btn">검색</a>
+</div>
+
+{% endblock %}

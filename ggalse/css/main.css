@@ -1,0 +1,44 @@
+.main_content_wrapper .post_wrapper {
+  display: flex;
+}
+
+.main_content_wrapper .post_wrapper > .post {
+  width: 50%;
+  margin-bottom: 20px;
+}
+.main_content_wrapper .post_wrapper > .post:nth-child(2) {
+  margin-left: 20px;
+}
+.main_content_wrapper .post_wrapper > .post h2 a {
+  position: relative;
+  border-top: 2px solid #e4e8eb;
+  border-bottom: 2px solid #e4e8eb;
+  display: inline-block;
+  color: #424242;
+  font-size: 17px;
+  line-height: 30px;
+  padding-left: 10px;
+  width: 100%;
+}
+
+.main_content_wrapper .post_wrapper > .post h2 a:after {
+  content: '\e914';
+  font-family: 'xeicon';
+  position: absolute;
+  right: 5px;
+  font-size: 17px;
+}
+.main_content_wrapper .post_wrapper > .post p {
+  border-bottom: 1px solid #e4e8eb;
+}
+.main_content_wrapper .post_wrapper > .post p:last-child {
+  border-bottom: none;
+}
+.main_content_wrapper .post_wrapper > .post p a {
+  width: 100%;
+  padding-left: 10px;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 35px;
+  color: #345066;
+}

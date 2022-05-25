@@ -1,0 +1,37 @@
+{% extends 'layout.html' %} {% block style %} <link rel="stylesheet" href="/write.css" /> {% endblock %} {% block js %}
+<script src="/axios/dist/axios.min.js"></script>
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="/write.js"></script>
+
+{% endblock %} {% block content %}
+<h2>글쓰기</h2>
+
+{% if article %}
+<input type="hidden" id="h_btype" />
+<input type="hidden" name="h_id" id="h_id" value="{{ article.id }}" />
+<input type="hidden" id="h_title" value="{{ article.title }}" />
+<input type="hidden" id="h_content" value="{{ article.content }}" />
+{% endif %}
+<select name="board" id="board" readonly>
+  {% if article %}
+  <option value="{{ article.btype }}" selceted>{{ bName }}</option>
+  {% else %}
+  <option selceted value="">게시판을 선택해 주세요.</option>
+  <option value="1">깔세자리제공</option>
+  <option value="2">깔세자리구함</option>
+  <option value="3">노점/푸드트럭</option>
+  <option value="4">임대및매매</option>
+  <option value="5">깔세상품제공</option>
+  <option value="6">깔세상품구매</option>
+  <option value="7">문의게시판</option>
+  {% if isAdmin %}
+  <option value="8">공지사항</option>
+  <option value="10">광고</option>
+  {% endif %}
+</select>
+{% endif %}
+
+<input type="text" name="title" id="title" placeholder="제목을 입력해 주세요." />
+<textarea class="form-control" name="p_content" id="p_content" value="{{ article.content }}" placeholder="내용을 입력해 주세요."></textarea>
+<input type="button" value="등록" id="b_submit" />
+{% endblock %}

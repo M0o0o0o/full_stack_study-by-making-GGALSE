@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/default.css" />
+    <link rel="stylesheet" href="/help.css" />
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="/helo_m.css" />
+
+    <title>깔세일번지</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="/"><img src="/main_logo_m.png" alt="" /><span class="hide">깔세일번지</span></a>
+      </h1>
+    </header>
+    <div class="main" role="main">
+      <div class="find_wrapper">
+        <div class="id_box">
+          <div class="label"><label for="email">회원가입 시 등록한 이메일</label></div>
+          <div class="email_box clear">
+            <input type="text" name="email" id="email" onkeydown="enterkey('issue_certi');" placeholder="이메일을 입력해주세요." />
+            <a href="javascript:void(0);" id="issue_certi">인증번호 받기</a>
+            <p id="id_e_message"></p>
+            <input type="text" id="certi_num" onkeydown="enterkey('id_btn');" class="input_toggle" placeholder="인증번호를 입력해주세요." />
+            <p id="c_message"></p>
+          </div>
+          <a href="javascript:void(0);" id="id_btn" class="ok_btn">확 인</a>
+        </div>
+        <div class="pwd_box">
+          <p class="notice">가입하신 아이디와 이메일이 일치해야 임시 비밀번호가 발급됩니다.</p>
+          <div class="pwd_form">
+            <label for="user_id">아이디 :</label>
+            <input type="text" id="user_id" placeholder="아이디를 입력해주세요." />
+            <p id="p_i_message"></p>
+          </div>
+          <div class="pwd_form">
+            <label for="_email">이메일 :</label>
+            <input type="text" id="_email" placeholder="이메일을 입력해주세요." onkeydown="enterkey('pwd_btn');" />
+            <p id="p_e_message"></p>
+          </div>
+          <p id="pwd_message" class="hidden_toggle"></p>
+
+          <a href="javascript:void(0);" id="pwd_btn" class="ok_btn">확 인</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/common.js"></script>
+    <script src="/check_form.js"></script>
+    <script>
+      (() => {
+        document.getElementById('issue_certi').onclick = async () => {
+          const e_message = document.getElementById('id_e_message');
+          const email = document.getElementById('email');
+
+          toggleArray(e_message, null, ['e_empty', 'e_wrong', 'n_exist']);
+          if (isEmpty(email)) {
+            toggleClass(e_message, 'e_empty', null);
+            return;
+          }
+          if (!emailReg(email.value)) {
+            toggleClass(e_message, 'e_wrong', null);
+            return;
+          }
+
+          if (await chk_email(email)) {
+            toggleClass(e_message, 'n_exist', null);
+            return;
+          }
+
+          if (await issuedCertiNum(email)) {
+            toggleClass(document.getElementById('certi_num'), null, 'input_toggle');
+          }
+
+          return;
+        };
+
+        document.getElementById('id_btn').onclick = async () => {
+          // 이메일 empty, 형식
+          // 인증번호 검사
+          const certi_num = document.getElementById('certi_num');
+          const e_message = document.getElementById('id_e_message');
+          const email = document.getElementById('email');
+          const c_message = document.getElementById('c_message');
+
+          toggleArray(e_message, null, ['e_empty', 'e_wrong']);
+          toggleArray(c_message, null, ['c_empty', 'wrong', 'right']);
+          c_message.innerText = '';
+
+          try {
+            if (isEmpty(email)) {
+              toggleClass(e_message, 'e_empty', null);
+              return;
+            }
+            if (!emailReg(email.value)) {
+              toggleClass(e_message, 'e_wrong', null);
+              return;
+            }
+
+            if (isEmpty(certi_num)) {
+              toggleClass(c_message, 'c_empty', null);
+              return;
+            }
+
+            const response = await axios({
+              method: 'post',
+              url: '/user/help/find/id',
+              data: {
+                email: email.value,
+                certi_num: certi_num.value,
+              },
+            });
+
+            // 라우터 쪽 다시 수정 후
+            if (response.status === 200 && response.data.status) {
+              c_message.innerText = response.data.message;
+              toggleClass(c_message, 'right', 'wrong');
+              return;
+            }
+
+            c_message.innerText = response.data.message;
+            toggleClass(c_message, 'wrong', 'right');
+          } catch (error) {}
+        };
+        document.getElementById('pwd_btn').onclick = async () => {
+          const p_i_message = document.getElementById('p_i_message');
+          const p_e_message = document.getElementById('p_e_message');
+          const pwd_message = document.getElementById('pwd_message');
+          const user_id = document.getElementById('user_id');
+          const email = document.getElementById('_email');
+
+          toggleArray(p_i_message, null, ['id_empty']);
+          toggleArray(p_e_message, null, ['e_empty', 'n_exist', 'e_wrong']);
+          toggleArray(pwd_message, ['hidden_toggle'], ['right', 'wrong']);
+
+          if (isEmpty(user_id)) {
+            toggleClass(p_i_message, 'id_empty', null);
+            return;
+          }
+
+          if (isEmpty(email)) {
+            toggleClass(p_e_message, 'e_empty', null);
+            return;
+          }
+
+          if (!emailReg(email.value)) {
+            toggleClass(p_e_message, 'e_wrong', null);
+            return;
+          }
+
+          try {
+            const response = await axios({
+              method: 'post',
+              url: '/user/help/find/pwd',
+              data: {
+                user_id: document.getElementById('user_id').value,
+                email: document.getElementById('_email').value,
+              },
+            });
+
+            if (response.status === 200) {
+              toggleClass(pwd_message, null, 'hidden_toggle');
+              pwd_message.innerText = response.data.message;
+
+              if (response.data.status) {
+                toggleClass(pwd_message, 'right', 'wrong');
+                return;
+              }
+              toggleClass(pwd_message, 'wrong', 'right');
+            }
+          } catch (error) {}
+        };
+      })();
+    </script>
+  </body>
+</html>

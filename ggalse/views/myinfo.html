@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>깔세일번지</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/default.css" />
+    <link rel="stylesheet" href="/myinfo.css" />
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="/myinfo_m.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="/"><span class="hide">깔세일번지</span></a>
+      </h1>
+    </header>
+    <!--  -->
+    <div class="wrapper_info">
+      <div class="info_box clear">
+        <label for="user_id">아이디 : </label>
+        <input type="text" id="user_id" value="{{ id }}" readonly />
+      </div>
+      <div class="info_box">
+        <label for="username">이름(닉네임) : </label>
+        <input type="text" name="username" id="username" value="{{ username }}" />
+        <p id="n_message"></p>
+      </div>
+
+      <div class="info_box">
+        <label for="email">이메일 : </label>
+        <input type="text" id="email" value="{{ email }}" readonly />
+      </div>
+
+      <div class="info_box">
+        <label for="password">변경할 비밀번호 : </label>
+        <input type="password" name="password" id="password" />
+        <p id="p_message"></p>
+      </div>
+
+      <div class="info_box">
+        <label for="chk_password">비밀번호 재확인 : </label>
+        <input type="password" id="chk_password" />
+        <p id="p_r_message"></p>
+      </div>
+      <div class="submit_form clear">
+        <a href="javascript:void(0);" id="submit_btn" class="btn">수정</a>
+        <a href="/" id="cancle_btn" class="btn">취소</a>
+        <div class="wrapper_withdraw"><a href="javascript:void(0)" class="hover_line" id="withdraw">회원탈퇴</a></div>
+      </div>
+    </div>
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/check_form.js"></script>
+    <script src="/common.js"></script>
+    <script>
+      document.getElementById('submit_btn').onclick = async () => {
+        // axios로 변경하면서 폼 삭제
+        // 전체적인 리팩토링
+        // 비밀번호 제약 사항 추가
+        const pwd = document.getElementById('password');
+        const r_pwd = document.getElementById('chk_password');
+        const username = document.getElementById('username');
+        const n_message = document.getElementById('n_message');
+        const p_message = document.getElementById('p_message');
+        const p_r_message = document.getElementById('p_r_message');
+
+        if (isEmpty(username)) {
+          toggleClass(n_message, 'e_empty', null);
+          return;
+        }
+
+        if (!isEmpty(pwd) && !isEmpty(r_pwd)) {
+          if (!pwdReg(pwd.value)) {
+            toggleClass(p_message, 'p_wrong', null);
+            return;
+          }
+          if (!chk_password(pwd, r_pwd)) {
+            toggleClass(p_r_message, 'p_r_wrong', null);
+            return;
+          }
+        }
+
+        const response = await axios({
+          method: 'post',
+          url: '/user/myinfo',
+          data: {
+            username: username.value,
+            password: pwd.value,
+            chk_password: r_pwd.value,
+          },
+        });
+
+        if (response.status === 200) {
+          if (response.data.status) {
+            window.location.href = '/';
+            return;
+          }
+
+          alert(response.data.message);
+        }
+      };
+
+      document.getElementById('withdraw').onclick = async () => {
+        if (!confirm('정말 회원탈퇴 하시겠습니까?')) {
+          return;
+        }
+
+        try {
+          const res = await axios({
+            method: 'delete',
+            url: '/user/myinfo/withdraw',
+          });
+
+          if (res.status === 200) {
+            window.location.href = '/';
+          }
+        } catch (error) {
+          window.location.href = '/';
+        }
+      };
+    </script>
+  </body>
+</html>

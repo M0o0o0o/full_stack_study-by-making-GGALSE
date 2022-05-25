@@ -1,0 +1,15 @@
+.id_box,
+.pwd_box {
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  border-top: 1px solid #cfcfcf;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.id_box .email_box #issue_certi {
+  font-size: 13px;
+  font-weight: normal;
+  float: right;
+  vertical-align: middle;
+}

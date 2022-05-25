@@ -1,0 +1,46 @@
+{% extends 'layout.html' %} {% block style%} {% endblock %} {% block js %}
+<script src="login.js"></script>
+{% endblock %} {% block content %}
+<div class="post_wrapper">
+  <div class="post">
+    <h2><a href="/board?btype=1&curpage=1&pagesize=15">깔세 자리 제공</a></h2>
+    {% for board in boards[1] %}
+    <p><a href="/board/article?id={{ board.id }}" class="hover_line">{{ board.title }}</a></p>
+    {% endfor %}
+  </div>
+  <div class="post">
+    <h2><a href="/board?btype=2&curpage=1&pagesize=15">깔세 자리 구함</a></h2>
+    {% for board in boards[2] %}
+    <p><a href="/board/article?id={{ board.id }}" class="hover_line">{{ board.title }}</a></p>
+    {% endfor %}
+  </div>
+</div>
+<div class="post_wrapper">
+  <div class="post">
+    <h2><a href="/board?btype=3&curpage=1&pagesize=15">노점 / 푸드트럭</a></h2>
+    {% for board in boards[3] %}
+    <p><a href="/board/article?id={{ board.id }}" class="hover_line">{{ board.title }}</a></p>
+    {% endfor %}
+  </div>
+  <div class="post">
+    <h2><a href="/board?btype=4&curpage=1&pagesize=15">임대 및 매매</a></h2>
+    {% for board in boards[4] %}
+    <p><a href="/board/article?id={{ board.id }}" class="hover_line">{{ board.title }}</a></p>
+    {% endfor %}
+  </div>
+</div>
+<div class="post_wrapper">
+  <div class="post">
+    <h2><a href="/board?btype=5&curpage=1&pagesize=15">깔세 상품 제공</a></h2>
+    {% for board in boards[5] %}
+    <p><a href="/board/article?id={{ board.id }}" class="hover_line">{{ board.title }}</a></p>
+    {% endfor %}
+  </div>
+  <div class="post">
+    <h2><a href="/board?btype=6&curpage=1&pagesize=15">깔세 상품 구매</a></h2>
+    {% for board in boards[6] %}
+    <p><a href="/board/article?id={{ board.id }}" class="hover_line">{{ board.title }}</a></p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

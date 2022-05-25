@@ -1,0 +1,31 @@
+header,
+.content_wrapper {
+  width: 100%;
+}
+
+header {
+  padding: 5px 0 40px 2px;
+}
+
+.check_box {
+  padding-left: 5px;
+}
+
+.terms_box {
+  font-size: 13px;
+  padding: 0 5px;
+}
+
+.btn_box {
+  justify-content: center;
+  word-spacing: 0;
+  font-size: 15px;
+}
+.btn_box > div {
+  width: 50%;
+}
+
+.btn_box a {
+  width: 80%;
+  line-height: 50px;
+}

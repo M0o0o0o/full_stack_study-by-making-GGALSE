@@ -1,0 +1,53 @@
+{% extends 'layout.html' %} {% block style %} <link rel="stylesheet" href="/article.css" /> {% endblock %} {% block content %}
+<div class="article_wrapper">
+  <input type="hidden" id="article_id" value="{{ article.id }}" />
+  <div class="article_info">
+    <h2 class="board_name clear">
+      <a href="/board?btype=1&curpage=1&pagesize=15" class="hover_line">{{ boardName }} ></a>
+      {% if mypage %}
+      <div class="u_area">
+        <a href="/write?id={{ article.id }}" id="b_modify">수정</a>
+        <a href="javascript:void(0)" id="b_delete">삭제</a>
+      </div>
+      {% endif %}
+    </h2>
+    <p class="title">{{ article.title }}</p>
+    <p class="name">{{ article.username }}</p>
+    <div class="etc_info">
+      <span class="date">{{ article.createdAt }}</span>
+      <span class="view">조회수 : {{ article.view }}</span>
+    </div>
+  </div>
+  <div></div>
+  <div class="article_content" id="article_content">
+    <input type="hidden" id="h_content" value="{{ article.content }}" />
+  </div>
+</div>
+
+{% endblock %} {% block js %}
+<script src="/axios/dist/axios.min.js"></script>
+<script>
+  (() => {
+    const content = document.getElementById('h_content').value;
+    document.getElementById('h_content').remove();
+    document.getElementById('article_content').innerHTML = content;
+
+    document.getElementById('b_delete').onclick = async () => {
+      if (!confirm('게시글을 삭제하시겠습니까?')) {
+        return;
+      }
+      try {
+        const article_id = document.getElementById('article_id').value;
+        const response = await axios({
+          method: 'delete',
+          url: `/board/article/delete?id=${article_id}`,
+        });
+
+        if (response.status === 200) {
+          window.location.href = response.data.redirect;
+        }
+      } catch (error) {}
+    };
+  })();
+</script>
+{% endblock %}

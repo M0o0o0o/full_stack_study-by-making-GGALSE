@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>깔세일번지 - 회원가입</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/default.css" />
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="/form_m.css" />
+  </head>
+  <!-- 이름 아이디 비밀번호 비밀번호 확인  이메일(이메일 확인) -->
+  <body>
+    <header>
+      <h1>
+        <a href="/"><span class="hide">깔세일번지</span></a>
+      </h1>
+    </header>
+    <!-- <form action="/sign/form" method="post" id="sign_form"> -->
+    <div class="wrapper_form">
+      <div class="input_wrapper" id="name_box">
+        <div class="label_box">
+          <label for="user_id">아이디</label>
+          <span>(필수)<span style="color: #4f4d4d">5~15자의 영문, 숫자만 사용 가능합니다.</span></span>
+        </div>
+        <div class="input_box"><input type="text" name="user_id" id="user_id" onkeydown="return preventEnter(this);" /></div>
+        <p id="id_message"></p>
+      </div>
+
+      <div class="input_wrapper">
+        <div class="label_box"><label for="password">비밀번호</label> <span>(필수)</span><span style="color: #4f4d4d">8~16자의 영문, 숫자, 특수문자를 사용하세요.</span></div>
+        <div class="input_box"><input type="password" id="password" name="password" onkeydown="return preventEnter(this);" /></div>
+        <p id="p_message"></p>
+      </div>
+
+      <div class="input_wrapper" id="chk_box">
+        <div class="label_box"><label for="chk_password">비밀번호 확인</label><span>(필수)</span></div>
+        <div class="input_box"><input type="password" name="chk_password" id="chk_password" onkeydown="return preventEnter(this);" /></div>
+        <p id="p_r_message"></p>
+      </div>
+
+      <div class="input_wrapper">
+        <div class="label_box"><label for="name">이름</label><span>(필수)</span></div>
+        <div class="input_box"><input type="text" name="username" id="name" onkeydown="return preventEnter(this);" /></div>
+        <p id="n_message"></p>
+      </div>
+
+      <div class="input_wrapper">
+        <div class="label_box"><label for="email">이메일</label><span>(필수)</span></div>
+        <div class="input_box email_box clear"><input type="text" name="email" id="email" onkeydown="return preventEnter(this);" /><button type="buton" id="certi">인증번호 받기</button></div>
+        <p id="chk_email" class="hidden_toggle wrong">이메일을 입력해주세요.</p>
+        <p id="e_message"></p>
+      </div>
+
+      <div class="input_wrapper input_toggle" id="certi_box">
+        <div class="input_box"><input type="text" id="certi_num" name="certi_num" onkeydown="return preventEnter(this);" placeholder="인증번호를 입력해주세요." /></div>
+        <p id="c_message"></p>
+      </div>
+
+      <div class="submit_wrapper">
+        <input type="button" id="submit_btn" value="가 입" />
+      </div>
+      <div id="agree_message" class="hide">필수 항목을 전부 입력해주세요.</div>
+    </div>
+    <!-- </form> -->
+
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/common.js"></script>
+    <script src="/check_form.js"></script>
+    <script>
+      (() => {
+        let isCerti = false;
+        let isID = false;
+        let isName = false;
+        let isEmail = false;
+        let isPassword = false;
+        let isRePwd = false;
+
+        const user_id = document.getElementById('user_id');
+        const eEmail = document.getElementById('email');
+        const ePassword = document.getElementById('password');
+        const eChk_password = document.getElementById('chk_password');
+        const eName = document.getElementById('name');
+        const certi_num = document.getElementById('certi_num');
+
+        // 이메일 인증 코드 발급
+        document.getElementById('certi').onclick = async (e) => {
+          isEmail = false;
+          e.preventDefault();
+          const e_message = document.getElementById('e_message');
+          toggleArray(e_message, null, ['e_empty', 'e_wrong', 'e_exist']);
+
+          if (isEmpty(eEmail)) {
+            toggleClass(e_message, 'e_empty', null);
+            return;
+          }
+
+          if (!emailReg(eEmail.value)) {
+            toggleClass(e_message, 'e_wrong', null);
+            return;
+          }
+
+          if (!(await chk_email(eEmail))) {
+            toggleClass(e_message, 'e_exist', null);
+            return;
+          }
+
+          if (!(await issuedCertiNum(eEmail))) {
+            return;
+          }
+
+          toggleClass(document.getElementById('certi_box'), null, 'input_toggle');
+          isEmail = true;
+        };
+
+        // 인증 코드 일치 여부 확인
+        document.getElementById('certi_num').onblur = async (e) => {
+          isCerti = false;
+          const c_message = document.getElementById('c_message');
+          toggleArray(c_message, null, ['e_empty', 'c_wrong']);
+
+          if (isEmpty(e.target)) {
+            toggleClass(c_message, 'e_empty', null);
+            return;
+          }
+
+          if (!(await chk_certi(e.target.value))) {
+            toggleClass(c_message, 'c_wrong', null);
+            return;
+          }
+
+          isCerti = true;
+        };
+
+        document.getElementById('user_id').onblur = async (e) => {
+          isID = false;
+          const id_message = document.getElementById('id_message');
+          toggleArray(id_message, null, ['id_empty', 'id_wrong', 'id_exist', 'id_avail']);
+
+          if (isEmpty(e.target)) {
+            toggleClass(id_message, 'e_empty', null);
+            return;
+          }
+          if (!idReg(e.target.value)) {
+            toggleClass(id_message, 'id_wrong', null);
+            return;
+          }
+
+          const avail = await exist_userID(e.target);
+
+          if (avail) {
+            toggleClass(id_message, 'id_avail', null);
+            isID = true;
+            return;
+          }
+
+          toggleClass(id_message, 'id_exist', null);
+          return;
+        };
+
+        document.getElementById('password').onblur = (e) => {
+          isPassword = false;
+          const p_message = document.getElementById('p_message');
+          toggleArray(p_message, null, ['e_empty', 'p_wrong']);
+
+          if (isEmpty(e.target)) {
+            toggleClass(p_message, 'e_empty', null);
+            return;
+          }
+
+          if (!pwdReg(e.target.value)) {
+            toggleClass(p_message, 'p_wrong', null);
+          }
+
+          isPassword = true;
+          return;
+        };
+
+        document.getElementById('chk_password').onblur = (e) => {
+          isRePwd = false;
+          const p_message = document.getElementById('p_r_message');
+          toggleArray(p_message, null, ['e_empty', 'p_r_wrong']);
+
+          if (isEmpty(e.target)) {
+            toggleClass(p_message, 'e_empty', null);
+            return;
+          }
+
+          if (!chk_password(ePassword, eChk_password)) {
+            toggleClass(p_message, 'p_r_wrong', null);
+            return;
+          }
+          isRePwd = true;
+          return;
+        };
+
+        document.getElementById('name').onblur = (e) => {
+          isName = false;
+          const n_message = document.getElementById('n_message');
+
+          toggleClass(n_message, null, 'e_empty');
+
+          if (isEmpty(e.target)) {
+            toggleClass(n_message, 'e_empty', null);
+            return;
+          }
+
+          isName = true;
+          return;
+        };
+
+        document.getElementById('submit_btn').onclick = async () => {
+          if (!(isCerti && isID && isName && isEmail && isPassword && isRePwd)) {
+            return false;
+          }
+          try {
+            const response = await axios({
+              method: 'post',
+              url: '/sign/form',
+              data: {
+                user_id: user_id.value,
+                email: eEmail.value,
+                password: ePassword.value,
+                chk_password: eChk_password.value,
+                username: eName.value,
+                certi_num: certi_num.value,
+              },
+            });
+
+            if (response.status === 200) {
+              if (!response.data.sign) {
+                alert(response.data.message);
+                return;
+              }
+              window.location.href = '/';
+            }
+          } catch (error) {
+            alert(error.response.data.message);
+            window.locaion.href = '/sing/form';
+          }
+        };
+      })();
+    </script>
+  </body>
+</html>

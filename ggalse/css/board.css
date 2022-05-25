@@ -1,0 +1,145 @@
+.board_info {
+  border-bottom: 1px solid #000;
+  padding-bottom: 25px;
+}
+
+.btype {
+  color: #333;
+  line-height: 1;
+  padding-bottom: 10px;
+}
+
+.total > span {
+  color: #525252;
+  font-size: 13px;
+}
+
+.board {
+  margin-bottom: 40px;
+}
+
+.board th,
+.board td {
+  border-bottom: 1px solid #ebebeb;
+}
+
+.board > thead {
+  line-height: 50px;
+  font-size: 15px;
+  color: #525252;
+}
+
+.board > thead .th_user {
+  text-align: left;
+}
+
+.board > tbody > tr {
+  line-height: 50px;
+  font-size: 14px;
+  color: #000;
+}
+
+.board > tbody .title > a,
+.board > tbody td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.board > tbody .title > a {
+  display: inline-block;
+  width: 469px;
+  line-height: 100%;
+  padding: 0 10px;
+}
+
+.board > tbody .date,
+.board > tbody .view {
+  text-align: center;
+}
+
+.board > tbody .b_small {
+  font-size: 13px;
+}
+
+#paging {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#paging .page > a {
+  display: inline-block;
+  width: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  text-align: center;
+  margin: 0 5px;
+  color: #000;
+}
+
+#paging .curpage > a {
+  font-weight: bold;
+  color: #00c73c;
+}
+
+#paging .prev a,
+#paging .next a {
+  display: inline-block;
+  width: 50px;
+}
+#paging .prev,
+#paging .next {
+  position: relative;
+}
+#paging .prev:before {
+  content: '\e93b';
+  font-family: 'xeicon';
+  position: absolute;
+  display: inline-block;
+  font-size: 17px;
+  color: #000;
+  top: 50%;
+  left: -2px;
+  transform: translateY(-50%);
+}
+
+#paging .next:after {
+  content: '\e93e';
+  font-family: 'xeicon';
+  position: absolute;
+  display: inline-block;
+  font-size: 17px;
+  color: #000;
+  top: 50%;
+  right: -2px;
+  transform: translateY(-50%);
+}
+
+.wrapper_b_s {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.wrapper_b_s select {
+  height: 30px;
+  border: 1px solid #d6d6d6;
+  margin-right: 5px;
+}
+
+.wrapper_search #b_search_btn {
+  line-height: 30px;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.wrapper_search #search_board {
+  border: 1px solid #d6d6d6;
+  height: 30px;
+  font-size: 13px;
+  width: 200px;
+}
+
+.table_m {
+  display: none;
+}

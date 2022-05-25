@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #000;
+}
+
+.main {
+  margin-top: 20px;
+}
+
+input:focus {
+  border: 2px solid #00c73c;
+}
+
+input {
+  display: inline-block;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  padding-left: 5px;
+  font-size: 14px;
+  color: #000;
+}
+
+header > h1 {
+  padding: 20px 0 10px 20px;
+}
+
+.id_box,
+.pwd_box {
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.id_box:before {
+  content: '아이디 찾기';
+  color: #000;
+  position: absolute;
+  display: inline-block;
+  background: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100px;
+  line-height: 1;
+  top: -5px;
+  left: 15px;
+  text-align: center;
+}
+.pwd_box:before {
+  content: '비밀번호 찾기';
+  color: #000;
+  position: absolute;
+  display: inline-block;
+  background: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  width: 110px;
+  line-height: 1;
+  top: -5px;
+  left: 15px;
+  text-align: center;
+}
+
+.id_box .label {
+  padding-top: 5px;
+  color: #000;
+}
+
+.id_box .email_box {
+  padding-top: 10px;
+  margin-bottom: 40px;
+}
+
+.id_box .email_box > * {
+  line-height: 33px;
+}
+
+.id_box .email_box #email {
+  display: inline-block;
+  width: 50%;
+  margin: 5px 0;
+}
+
+.id_box .email_box #issue_certi {
+  display: inline-block;
+  line-height: 33px;
+  width: 100px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  background: #00c73c;
+  border-radius: 5px;
+  color: #fff;
+  margin-left: 3%;
+}
+
+.id_box .email_box #certi_num {
+  display: block;
+  margin: 10px 0;
+}
+
+#text_form,
+#id_text {
+  line-height: 30px;
+  font-size: 15px;
+}
+
+.ok_btn {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+  width: 60px;
+  text-align: center;
+  line-height: 40px;
+  background: #525252;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/*  */
+
+.pwd_box {
+  padding-bottom: 70px;
+}
+
+.pwd_box .notice {
+  font-size: 13px;
+  color: #727272;
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.pwd_form {
+  margin-bottom: 15px;
+}
+
+.pwd_form > input {
+  display: inline-block;
+  line-height: 33px;
+  width: 50%;
+  vertical-align: middle;
+}
+
+#id_e_message,
+#c_e_message,
+#c_message,
+#p_i_message,
+#p_e_message,
+#pwd_message {
+  padding-top: 3px;
+  font-size: 12px;
+  line-height: 1;
+}
+/* content: '사용 가능한 아이디입니다.'; */
+/* color: #00c73c; */
+
+/* content: '인증번호가 일치하지 않습니다.'; */
+/* color: #ff341f; */
+.e_empty:after {
+  content: '이메일을 입력해 주세요.';
+  color: #ff341f;
+}
+
+.e_wrong:after {
+  content: '올바른 형식이 아닙니다.';
+  color: #ff341f;
+}
+
+.n_exist:after {
+  content: '가입된 아이디가 없습니다.';
+  color: #ff341f;
+}
+
+.id_empty:after {
+  content: '아이디를 입력해주세요.';
+  color: #ff341f;
+}
+
+.c_empty:after {
+  content: '인증번호를 입력하세요.';
+  color: #ff341f;
+}

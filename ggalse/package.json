@@ -1,0 +1,58 @@
+{
+  "name": "ggalse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production PORT=80 pm2 start web.js",
+    "dev": "npx nodemon web",
+    "devs": "cross-env NODE_ENV=production PORT=3000 nodemon web.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lee-moo/ggalse.git"
+  },
+  "author": "lmy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lee-moo/ggalse/issues"
+  },
+  "homepage": "https://github.com/Lee-moo/ggalse#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "connect-redis": "^6.0.0",
+    "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "crypto": "^1.0.1",
+    "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "helmet-csp": "^3.4.0",
+    "hpp": "^0.2.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.6.3",
+    "nunjucks": "^3.2.3",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "passport-naver": "^1.0.6",
+    "passport-naver-v2": "^2.0.8",
+    "pm2": "^5.1.0",
+    "redis": "^3.1.2",
+    "sanitize-html": "^2.4.0",
+    "sequelize": "^5.22.4",
+    "sequelize-cli": "^6.2.0",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  }
+}

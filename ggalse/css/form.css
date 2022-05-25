@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+input {
+  outline: none;
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #bfbfbf;
+  border-radius: 3px;
+  color: #000;
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+input::placeholder {
+  font-size: 14px;
+}
+header,
+.wrapper_form {
+  width: 520px;
+  margin: 0 auto;
+}
+
+header > h1 {
+  text-align: center;
+}
+
+header > h1 > a {
+  display: inline-block;
+  width: 242px;
+  height: 92px;
+  background-image: url('/main_logo.png');
+}
+.input_wrapper {
+  padding-bottom: 20px;
+}
+
+.input_wrapper > .label_box {
+  line-height: 1;
+  padding: 7px 0;
+}
+
+.label_box label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+
+.label_box span {
+  display: inline-block;
+  padding-left: 4px;
+  color: #ff341f;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.input_wrapper > .input_box > input:focus {
+  border: 3px solid #00c73c;
+}
+
+#email {
+  width: 60%;
+}
+
+#certi {
+  width: 30%;
+  float: right;
+  display: block;
+  height: 40px;
+  background: #00c73c;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit_wrapper input {
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  background: #00c73c;
+  font-size: 16px;
+  word-spacing: 10px;
+}
+
+.submit_wrapper input:hover {
+  cursor: pointer;
+}
+
+#agree_message {
+  font-size: 15px;
+  color: #ff341f;
+  padding-top: 3px;
+}
+
+.e_empty:after {
+  content: '필수 정보입니다.';
+  color: #ff341f;
+}
+
+.id_wrong:after {
+  content: '5~15자의 영문, 숫자만 사용 가능합니다.';
+  color: #ff341f;
+}
+
+.id_exist:after {
+  content: '아이디가 이미 사용 중입니다.';
+  color: #ff341f;
+}
+
+.id_avail:after {
+  content: '사용 가능한 아이디입니다.';
+  color: #00c73c;
+}
+
+.p_wrong:after {
+  content: '8~16자의 영문, 숫자, 특수문자를 사용하세요.';
+  color: #ff341f;
+}
+
+.p_r_wrong:after {
+  content: '비밀번호가 일치하지 않습니다.';
+  color: #ff341f;
+}
+
+.c_wrong:after {
+  content: '인증번호가 일치하지 않습니다.';
+  color: #ff341f;
+}
+
+.e_wrong:after {
+  content: '올바르지 않은 형식입니다.';
+  color: #ff341f;
+}
+
+.e_exist:after {
+  content: '이미 사용 중인 이메일입니다.';
+  color: #ff341f;
+}
+
+/* 정규 표현식 정리 */

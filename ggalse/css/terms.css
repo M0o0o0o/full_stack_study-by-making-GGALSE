@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+input[type='checkbox'] {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+header,
+.content_wrapper {
+  width: 520px;
+  margin: 0 auto;
+}
+header {
+  padding: 50px 0;
+}
+
+.terms_wrapper {
+  margin-bottom: 75px;
+}
+
+.check_box {
+  font-size: 15px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  color: #525252;
+}
+
+.check_box > label > span {
+  display: inline-block;
+  padding-left: 10px;
+  color: #ff341f;
+}
+
+.terms_box {
+  width: 100%;
+  height: 120px;
+  overflow: auto;
+  font-size: 12px;
+  padding: 3px;
+  border: 1px solid #dedede;
+}
+
+.terms_box h2 {
+  font-size: 13px;
+  color: #000;
+}
+.terms_box h3 {
+  font-size: 13px;
+  color: #000;
+}
+
+.terms_box p {
+  color: #2e2e2e;
+}
+
+#agree_message {
+  font-size: 15px;
+  color: #ff341f;
+  padding-top: 3px;
+}
+
+.btn_box {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 17px;
+  word-spacing: 40px;
+  font-weight: bold;
+}
+
+.btn_box a {
+  display: inline-block;
+  width: 240px;
+  line-height: 60px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.btn_box .btn_ok {
+  background: #00c73c;
+}
+
+.btn_box .btn_cancle {
+  background: #a8a8a8;
+}
+
+/* content: "\e92e"; */
+/* content: "\ea0e"; */

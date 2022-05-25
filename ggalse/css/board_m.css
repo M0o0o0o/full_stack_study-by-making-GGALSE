@@ -1,0 +1,22 @@
+table {
+  display: none;
+}
+
+.table_m {
+  display: block;
+  height: 75px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding: 5px 0 20px 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.table_m a {
+  display: inline-block;
+  width: 100%;
+
+  font-size: 15px;
+  line-height: 18px;
+  color: #000;
+  margin-bottom: 3px;
+}

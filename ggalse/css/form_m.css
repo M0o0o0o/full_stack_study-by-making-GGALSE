@@ -1,0 +1,16 @@
+header,
+.wrapper_form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+header > h1 {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+header > h1 > a {
+  background-image: url('/main_logo_m.png');
+  width: 100px;
+  height: 18px;
+}
